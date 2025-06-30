@@ -1,0 +1,25 @@
+def process_array(A):
+n = len(A)
+if n == 0:
+return A, 0
+max_idx = A.index(max(A))
+min_idx = A.index(min(A))
+# Обмен местами
+A[max_idx], A[min_idx] = A[min_idx], A[max_idx]
+# Переопределяем индексы после swap
+max_idx, min_idx = min_idx, max_idx
+left, right = sorted([min_idx, max_idx])
+product = 1
+found = False
+for i in range(left + 1, right):
+if A[i] > 0:
+product *= A[i]
+found = True
+if not found:
+product = 0
+return A, product
+# Пример использования
+A = [3, -2, 5, 1, -4, 6]
+result_array, result_product = process_array(A)
+print("Изменённый массив:", result_array)
+print("Произведение положительных:", result_product)3.3
